@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <title>Yashwin Enamadi | XMeme</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="index.css">
+  <link rel="shortcut icon" href="xmeme.jpg" type="image/x-icon">
+  <script src='index.js'></script>
+
+<body>
+
+<!-- Header -->
+<header class="w3-display-container w3-content w3-center" style="max-width:500px">
+  <!-- Post a meme -->
+  <div class="w3-light-grey w3-padding-large w3-padding-32 w3-margin-top" id="contact">
+    <h3 class="w3-center">Post Your Meme</h3>
+    <hr>
+    <form id='x3-form'>
+      <!-- form body to post memes -->
+    </form><br>
+    <p>Copy Rights &copy; 2021 Yashwin Enamadi</p>
+  </div>
+  
+  <!-- Navbar (placed at the bottom of the header image) -->
+  <div class="w3-bar w3-dark-grey w3-round w3-display-bottommiddle w3-hide-small" style="bottom:-16px">
+    <div type="button" class='w3-bar-item w3-button' onclick='postWithImg()'>Image</div>
+    <div type="button" class='w3-bar-item w3-button' onclick='getMemes()'>Refresh</div>
+    <div type="button" class='w3-bar-item w3-button' onclick='postWithURL()'>URL</div>
+  </div>
+</header>
+
+<!-- Navbar on small screens -->
+<div class="w3-center w3-dark-grey w3-padding-16 w3-hide-large w3-hide-medium">
+<div class="w3-bar w3-light-grey">
+  <div type="button" class='w3-bar-item w3-button' onclick='postWithImg()'>Image</div>
+  <div type="button" class='w3-bar-item w3-button' onclick='getMemes()'>Refresh</div>
+  <div type="button" class='w3-bar-item w3-button' onclick='postWithURL()'>URL</div>
+</div>
+</div>
+
+<br>
+<!-- Form to get a meme by Id -->
+<div class="w3-display-container w3-content w3-center" style="max-width:500px">
+  <div class="w3-light-grey w3-padding-large w3-padding-32 w3-margin-top" style="max-width:500px">
+    <h3 class="w3-center">Get Meme By Id</h3>
+    <form id='x3-specific-form'>
+      <div class="w3-section">
+        <label>Id</label>
+        <input id="x3-specific-id" class="w3-input w3-border" type="text" required name="id">
+      </div>
+      <button onclick='getSpecificMeme()' class="w3-button w3-block w3-dark-grey" type="button">Get Meme</button>
+    </form>
+    <div class="w3-content w3-padding-large w3-margin-top" id="x3-specific-meme"></div>
+  </div>
+</div>
+
+<!-- Page content -->
+<div class="w3-content w3-padding-large w3-margin-top" id="portfolio">
+  <!-- Memes (Display all memes) -->
+<!-- End page content -->
+</div>
+
+</body>
+</html>

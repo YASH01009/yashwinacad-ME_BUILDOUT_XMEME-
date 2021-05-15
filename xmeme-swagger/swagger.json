@@ -1,0 +1,163 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "XMeme",
+    "description": "Project at Crio.do Stage-2B"
+  },
+  "host": "yashwin-xmeme.herokuapp.com",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "Memes",
+      "description": "Everything about memes"
+    }
+  ],
+  "schemes": [
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/memes": {
+      "get": {
+        "tags": [
+          "Memes"
+        ],
+        "summary": "Get latest 100 memes",
+        "responses": {
+          "200": {
+            "description": "Returns a JSON array containing recently posted 100 memes"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Memes"
+        ],
+        "summary": "Posts a meme",
+        "parameters": [
+          {
+            "name": "meme_object",
+            "in": "body",
+            "description": "Details of the meme",
+            "required": true,
+            "schema": {
+              "required": [
+                "name",
+                "caption",
+                "url"
+              ],
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "example":"Nitish Kumar Reddy"
+                },
+                "caption": {
+                  "type": "string",
+                  "example":"Hi this is Nitish"
+                },
+                "url": {
+                  "type": "string",
+                  "example":"https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Mount_Everest_as_seen_from_Drukair2_PLW_edit.jpg/270px-Mount_Everest_as_seen_from_Drukair2_PLW_edit.jpg"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Returns an object with id attribute of the posted meme"
+          },
+          "400": {
+            "description": "Returns a JSON object which contains the error attribute to indicate the specific error"
+          },
+          "409": {
+            "description": "This meme already exists on the server"
+          }
+        }
+      }
+    },
+    "/memes/{id}": {
+      "get": {
+        "tags": [
+          "Memes"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "Id of the meme required"
+          }
+        ],
+        "summary": "Get a meme by specifying its Id",
+        "responses": {
+          "200": {
+            "description": "Returns a JSON object that contains required details of the meme"
+          },
+          "400": {
+            "description": "Returna a JSON object that contains error attribute to describe the error"
+          },
+          "409": {
+            "description": "The meme that is requested for does not exist on the server"
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Memes"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "Id of the meme required to be changed"
+          }, 
+          {
+            "name": "meme_details",
+            "in": "body",
+            "required": true,
+            "description": "Details of the meme",
+            "schema": {
+              "required": [
+                "caption",
+                "url"
+              ],
+              "properties": {
+                "caption": {
+                  "type": "string",
+                  "example": "Hi this is Nitish"
+                },
+                "url": {
+                  "type": "string",
+                  "example": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Mount_Everest_as_seen_from_Drukair2_PLW_edit.jpg/270px-Mount_Everest_as_seen_from_Drukair2_PLW_edit.jpg"
+                }
+              }
+            }
+          }
+        ],
+        "summary": "This endpoint edits a meme",
+        "responses": {
+          "200": {
+            "description": "The meme with requested id has been edited"
+          },
+          "400": {
+            "description": "Returns a JSON object containing the error attribute"
+          },
+          "409": {
+            "description": "The meme when edited creates a duplicate post and hence the request is rejected"
+          },
+          "404": {
+            "description": "The meme that is requested for does not exist on the server"
+          }
+        }
+      }
+    }
+  }
+}
